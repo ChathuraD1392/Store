@@ -2,10 +2,18 @@
 import React, { useEffect, useState } from "react";
 import AnnouncementBar from "./AnnouncementBar";
 import Link from "next/link";
+import { User } from "@prisma/client";
+import { logoutUser } from "@/app/actions/auth";
+import { useRouter } from "next/navigation";
 
-const Header = () => {
+type HeaderProps = {
+  user: Omit<User, "passwordHash"> | null;
+};
+
+const Header = ({ user }: HeaderProps) => {
   const [isVisible, setVisibility] = useState<boolean>(true);
   const [prevScrollY, setPrevScrollY] = useState<number>(0);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +67,11 @@ const Header = () => {
                   <Link href="#">Sale</Link>
                 </nav>
               </div>
-              <Link href="#">Link</Link>
+              <Link href="#" className="absolute left-1/2 -translate-x-0.5">
+                <span className="text-xl sm:text-2xl font-bold tracking-tight">
+                  DEAL
+                </span>
+              </Link>
               <div className="flex flex-1 justify-end items-center gap-2 sm:gap-4">
                 <button className="text-gray-700 hover:text-gray-900 hidden sm:block">
                   <svg
@@ -77,8 +89,31 @@ const Header = () => {
                     />
                   </svg>
                 </button>
-                <Link href="#">Sign In</Link>
-                <Link href="#">Sign Up</Link>
+
+                {user ? (
+                  <div className="flex items-center gap-2 sm:gap-4">
+                    <span className="text-xs sm:text-sm text-gray-700 hidden md:block">
+                      {user.email}
+                    </span>
+                    <Link
+                      href="#"
+                      className="text-xs sm:text-sm fonct-medium text-gray-700 hover:text-gray-900"
+                      onClick={async (event) => {
+                        event.preventDefault();
+                        await logoutUser();
+                        router.refresh();
+                      }}
+                    >
+                      Sign Out
+                    </Link>
+                  </div>
+                ) : (
+                  <React.Fragment>
+                    <Link href="/auth/signin">Sign In</Link>
+                    <Link href="/auth/signup">Sign Up</Link>
+                  </React.Fragment>
+                )}
+
                 <button className="text-gray-700 hover:text-gray-900 relative">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

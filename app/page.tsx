@@ -1,3 +1,9 @@
-export default function Home() {
-  return <div>Home</div>;
-}
+import React from "react";
+import { getCurrentSession } from "./actions/auth";
+
+const Home = async () => {
+  const { user } = await getCurrentSession();
+  return <div>{JSON.stringify(user)}</div>;
+};
+
+export default Home;
