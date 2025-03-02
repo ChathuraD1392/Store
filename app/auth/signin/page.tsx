@@ -1,8 +1,6 @@
-import { getCurrentSession, loginUser, registerUser } from "@/app/actions/auth";
+import { getCurrentSession, loginUser } from "@/app/actions/auth";
 import Signin from "@/app/components/auth/Signin";
-import Signup from "@/app/components/auth/Signup";
 import { redirect } from "next/navigation";
-import React from "react";
 import { z } from "zod";
 
 const SignInSchema = z.object({

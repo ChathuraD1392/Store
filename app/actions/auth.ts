@@ -1,14 +1,13 @@
 'use server';
 
-import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 import { sha256 } from "@oslojs/crypto/sha2";
+import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 
-import type { User, Session } from "@prisma/client";
-import prisma from "../lib/prisma";
+import type { Session, User } from "@prisma/client";
 import { cookies } from "next/headers";
-import { cache, use } from "react";
-import { error } from "console";
-import { create } from "zustand";
+import { cache } from "react";
+import prisma from "../lib/prisma";
+
 
 export async function generateSessionToken(): Promise<string> {
 	const bytes = new Uint8Array(20);
@@ -149,7 +148,7 @@ export type SessionValidationResult =
         }catch(e){
             return {
                 user:null,
-                error:"Failed to register the user..."
+                error:"Failed to register the User"+ e
             }
         }
     }
