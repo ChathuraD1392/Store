@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/layouts/Header";
 import { getCurrentSession } from "./actions/auth";
+import { SanityLive } from "@/sanity/lib/live";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,10 +29,11 @@ const RootLayout = async ({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[200vh]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[200vh] `}
       >
         <Header user={user} />
         {children}
+        <SanityLive />
       </body>
     </html>
   );

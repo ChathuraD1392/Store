@@ -22,7 +22,7 @@ const Signin = ({ action }: SignInProps) => {
       className="max-w-md mx-auto my-16 p-8 bg-white rounded-lg shadow"
     >
       <h1 className="text-2xl font-bold text-center mb-2">Welcome Back!</h1>
-      <p className="text-center text-sm text-rose-600 font-semibold mb-2">
+      <p className="text-center text-sm text-amber-400 font-semibold mb-2">
         🔥 MEMBER EXCLUSIVE 🔥
       </p>
       <p className="text-center text-sm text-gray-600 font-semibold mb-2">
@@ -79,7 +79,7 @@ const Signin = ({ action }: SignInProps) => {
         <button
           type="submit"
           disabled={isPending}
-          className={`w-full bg-rose-600 text-white py-3 rounded-md hover:bg-rose-700 transition-colors font-medium flex items-center justify-center gap-2 ${
+          className={`w-full bg-cyan-500 text-white py-3 rounded-md hover:bg-cyan-600 transition-colors font-medium flex items-center justify-center gap-2 ${
             isPending ? "cursor-not-allowed" : ""
           }`}
         >
@@ -93,7 +93,7 @@ const Signin = ({ action }: SignInProps) => {
           )}
         </button>
         {state?.message && state.message.length > 0 && (
-          <p className="text-center text-sm text-red-600">{state.message}</p>
+          <p className="text-center text-sm text-rose-600">{state.message}</p>
         )}
       </div>
     </Form>

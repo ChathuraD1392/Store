@@ -91,10 +91,13 @@ const Header = ({ user }: HeaderProps) => {
                 </button>
 
                 {user ? (
-                  <div className="flex items-center gap-2 sm:gap-4">
-                    <span className="text-xs sm:text-sm text-gray-700 hidden md:block">
-                      {user.email}
-                    </span>
+                  <div className="flex items-center gap-2 sm:gap-4 relative">
+                    <div className="relative hidden md:block">
+                      <span className="text-xs sm:text-sm text-gray-700 hidden md:block">
+                        {user.email}
+                      </span>
+                      <span className="absolute -top-1 -right-1 bg-cyan-300 w-2 h-2 rounded-full flex items-center justify-center"></span>
+                    </div>
                     <Link
                       href="#"
                       className="text-xs sm:text-sm fonct-medium text-gray-700 hover:text-gray-900"
@@ -129,7 +132,7 @@ const Header = ({ user }: HeaderProps) => {
                       d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                     />
                   </svg>
-                  <span className="absolute -top-1 -right-1 bg-black text-white text-[10px] sm:text-xs w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-cyan-600 text-white text-[10px] sm:text-xs w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center">
                     0
                   </span>
                 </button>
