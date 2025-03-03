@@ -52,7 +52,7 @@ const ProductItem = ({ product }: Props) => {
           </div>
           <Link
             href={`/product/${product._id}`}
-            className="w-full text-center bg-gradient-to-r from-red-400 via-slate-500 to-cyan-400 text-white py-2 rounded-full text-sm font-bold hover:brightness-110 transition-all"
+            className="w-full text-center bg-gradient-to-r from-cyan-500  to-red-400 text-white py-2 rounded-full text-sm font-bold hover:brightness-110 transition-all"
           >
             ADD TO CART
           </Link>
