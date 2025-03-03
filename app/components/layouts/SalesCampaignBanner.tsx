@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 const SalesCampaignBanner = () => {
   const router = useRouter();
   return (
-    <div className="w-full bg-gradient-to-r from-red-400 to-cyan-400 py-3 relative overflow-hidden">
+    <div className="w-full bg-sky-500 py-3 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-white">
           <div className="flex items-center gap-2">
@@ -21,7 +21,7 @@ const SalesCampaignBanner = () => {
 
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold">⚡</span>
-            <span className="font-bold text-amber-200 animate-pulse">
+            <span className="font-bold text-amber-400 animate-pulse">
               UP TO 95% OFF!
             </span>
           </div>

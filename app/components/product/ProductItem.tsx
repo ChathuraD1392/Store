@@ -12,7 +12,7 @@ const ProductItem = ({ product }: Props) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden relative shadow hover:scale-101 transition ease-in-out delay-75 duration-400">
       <div className="absolute top-2 right-2 z-10">
-        <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
+        <span className="bg-red-400 text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse">
           HOT!
         </span>
       </div>
@@ -52,7 +52,7 @@ const ProductItem = ({ product }: Props) => {
           </div>
           <Link
             href={`/product/${product._id}`}
-            className="w-full text-center bg-gradient-to-r from-cyan-500  to-red-400 text-white py-2 rounded-full text-sm font-bold hover:brightness-110 transition-all"
+            className="w-full text-center bg-sky-500 text-white py-2 rounded-full text-sm font-bold hover:brightness-110 transition-all"
           >
             ADD TO CART
           </Link>

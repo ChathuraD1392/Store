@@ -5,12 +5,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import AnnouncementBar from "./AnnouncementBar";
+import HeaderSearchBar from "./HeaderSearchBar";
 
 type HeaderProps = {
   user: Omit<User, "passwordHash"> | null;
+  categorySelector: React.ReactNode;
 };
 
-const Header = ({ user }: HeaderProps) => {
+const Header = ({ user, categorySelector }: HeaderProps) => {
   const [isVisible, setVisibility] = useState<boolean>(true);
   const [prevScrollY, setPrevScrollY] = useState<number>(0);
   const router = useRouter();
@@ -64,32 +66,17 @@ const Header = ({ user }: HeaderProps) => {
                 <nav className="hidden md:flex gap-4 lg:gap-6 text-md font-bold">
                   <Link href="#">Shop</Link>
                   <Link href="#">New Arrivals</Link>
+                  {categorySelector}
                   <Link href="#">Sale</Link>
                 </nav>
               </div>
-              <Link href="#" className="absolute left-1/2 -translate-x-0.5">
+              <Link href="/" className="absolute left-1/2 -translate-x-0.5">
                 <span className="text-xl sm:text-2xl font-bold tracking-tight">
                   ALL IN ONE
                 </span>
               </Link>
               <div className="flex flex-1 justify-end items-center gap-2 sm:gap-4">
-                <button className="text-gray-700 hover:text-gray-900 hidden sm:block">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </button>
-
+                <HeaderSearchBar />
                 {user ? (
                   <div className="flex items-center gap-2 sm:gap-4 relative">
                     <div className="relative hidden md:block">
@@ -103,20 +90,20 @@ const Header = ({ user }: HeaderProps) => {
                     </div>
                     <Link
                       href="#"
-                      className="text-xs sm:text-sm fonct-medium text-gray-700 hover:text-gray-900"
+                      className="text-md sm:text-sm font-bold text-gray-700 hover:text-gray-900"
                       onClick={async (event) => {
                         event.preventDefault();
                         await logoutUser();
                         router.refresh();
                       }}
                     >
-                      Sign Out
+                      SIGN OUT
                     </Link>
                   </div>
                 ) : (
                   <React.Fragment>
-                    <Link href="/auth/signin">Sign In</Link>
-                    <Link href="/auth/signup">Sign Up</Link>
+                    <Link href="/auth/signin">SIGN IN</Link>
+                    <Link href="/auth/signup">SIGN UP</Link>
                   </React.Fragment>
                 )}
 
