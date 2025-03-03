@@ -4,6 +4,12 @@ import { redirect } from "next/navigation";
 import React from "react";
 import { z } from "zod";
 
+type FormState =
+  | {
+      message?: string;
+    }
+  | undefined;
+
 const SignUpSchema = z.object({
   email: z.string().email(),
   password: z.string().min(5),
@@ -16,7 +22,7 @@ const SignUpPage = async () => {
     return redirect("/");
   }
 
-  const action = async (prevState: any, formData: FormData) => {
+  const action = async (prevState: FormState, formData: FormData) => {
     "use server";
 
     const validation = SignUpSchema.safeParse(Object.fromEntries(formData));

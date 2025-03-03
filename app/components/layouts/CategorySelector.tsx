@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const CategorySelector = async () => {
   const categories = await getAllCategories();
-  console.log(categories);
+
   return (
     <div className="relative inline-block">
       <button className="peer group text-gray-700 hover:text-gray-900 text-md font-bold flex items-center gap-1">

@@ -1,8 +1,6 @@
-import React from "react";
-import ProductGrid from "../components/product/ProductGrid";
-import SalesCampaignBanner from "../components/layouts/SalesCampaignBanner";
 import { searchProducts } from "@/sanity/lib/client";
-import { useRouter } from "next/router";
+import SalesCampaignBanner from "../components/layouts/SalesCampaignBanner";
+import ProductGrid from "../components/product/ProductGrid";
 
 type SearchPageProps = {
   searchParams: Promise<{ query: string }>;

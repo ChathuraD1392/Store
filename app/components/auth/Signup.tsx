@@ -3,9 +3,15 @@ import React, { useActionState } from "react";
 import Form from "next/form";
 import { Loader2 } from "lucide-react";
 
+type FormState =
+  | {
+      message?: string;
+    }
+  | undefined;
+
 type SignUpProps = {
   action: (
-    prevState: any,
+    prevState: FormState,
     formData: FormData
   ) => Promise<{ message: string } | undefined>;
 };

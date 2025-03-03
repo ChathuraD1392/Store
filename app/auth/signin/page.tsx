@@ -3,6 +3,12 @@ import Signin from "@/app/components/auth/Signin";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
+type FormState =
+  | {
+      message?: string;
+    }
+  | undefined;
+
 const SignInSchema = z.object({
   email: z.string().email(),
   password: z.string().min(5),
@@ -15,7 +21,7 @@ const SignInPage = async () => {
     return redirect("/");
   }
 
-  const action = async (prevState: any, formData: FormData) => {
+  const action = async (prevState: FormState, formData: FormData) => {
     "use server";
 
     const validation = SignInSchema.safeParse(Object.fromEntries(formData));

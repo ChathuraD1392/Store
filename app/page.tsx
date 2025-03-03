@@ -1,14 +1,16 @@
 import { getAllProducts } from "@/sanity/lib/client";
-import { getCurrentSession } from "./actions/auth";
+import Head from "next/head";
 import SalesCampaignBanner from "./components/layouts/SalesCampaignBanner";
 import ProductGrid from "./components/product/ProductGrid";
 
 const Home = async () => {
-  const { user } = await getCurrentSession();
   const products = await getAllProducts();
 
   return (
     <>
+      <Head>
+        <link rel="icon" href="/logo.jpg" sizes="180x180" />
+      </Head>
       <div>
         <SalesCampaignBanner />
 
