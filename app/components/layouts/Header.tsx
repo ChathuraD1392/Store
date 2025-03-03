@@ -1,10 +1,10 @@
 "use client";
+import { logoutUser } from "@/app/actions/auth";
+import { User } from "@prisma/client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import AnnouncementBar from "./AnnouncementBar";
-import Link from "next/link";
-import { User } from "@prisma/client";
-import { logoutUser } from "@/app/actions/auth";
-import { useRouter } from "next/navigation";
 
 type HeaderProps = {
   user: Omit<User, "passwordHash"> | null;
@@ -69,7 +69,7 @@ const Header = ({ user }: HeaderProps) => {
               </div>
               <Link href="#" className="absolute left-1/2 -translate-x-0.5">
                 <span className="text-xl sm:text-2xl font-bold tracking-tight">
-                  DEAL
+                  ALL IN ONE
                 </span>
               </Link>
               <div className="flex flex-1 justify-end items-center gap-2 sm:gap-4">
@@ -96,7 +96,10 @@ const Header = ({ user }: HeaderProps) => {
                       <span className="text-xs sm:text-sm text-gray-700 hidden md:block">
                         {user.email}
                       </span>
-                      <span className="absolute -top-1 -right-1 bg-cyan-300 w-2 h-2 rounded-full flex items-center justify-center"></span>
+                      <span className="absolute -top-1 -right-1 flex">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                        <span className="relative inline-flex size-2 rounded-full bg-sky-500"></span>
+                      </span>
                     </div>
                     <Link
                       href="#"
@@ -117,7 +120,7 @@ const Header = ({ user }: HeaderProps) => {
                   </React.Fragment>
                 )}
 
-                <button className="text-gray-700 hover:text-gray-900 relative">
+                <button className="text-gray-700 hover:text-gray-900 relative hover:animate-bounce delay-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 sm:h-6 sm:w-6"
@@ -132,7 +135,7 @@ const Header = ({ user }: HeaderProps) => {
                       d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                     />
                   </svg>
-                  <span className="absolute -top-1 -right-1 bg-cyan-600 text-white text-[10px] sm:text-xs w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] sm:text-xs w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full flex items-center justify-center ">
                     0
                   </span>
                 </button>
